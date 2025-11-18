@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Fiche de l'élève{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+
+    <h2 class="text-3xl font-bold text-gray-800 mb-8">📄 Fiche de {{ student.first_name }} {{ student.last_name }}</h2>
+
+    <div class="bg-white shadow-lg rounded-lg p-6 mb-8 space-y-2">
+        <p><strong class="text-gray-700">Nom d'utilisateur :</strong> {{ student.username }}</p>
+        <p><strong class="text-gray-700">Email :</strong> {{ student.email }}</p>
+
+        {% if package %}
+        <div class="mt-4 space-y-1">
+            <p><strong class="text-gray-700">Forfait total :</strong> {{ package.total_hours }}h</p>
+            <p><strong class="text-gray-700">Heures utilisées :</strong> {{ package.used_hours }}h</p>
+            <p><strong class="text-gray-700">Heures restantes :</strong> {{ remaining_hours }}h</p>
+        </div>
+        {% else %}
+        <p class="mt-4 text-red-500"><strong>Forfait :</strong> Aucun forfait disponible.</p>
+        {% endif %}
+    </div>
+
+    <h3 class="text-2xl font-semibold text-gray-800 mb-4">📅 Rendez-vous passés et à venir</h3>
+
+    <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+        {% if appointments %}
+            <ul class="space-y-2">
+                {% for appointment in appointments %}
+                <li class="text-gray-600">
+                    📅 Le {{ appointment.date|date:"d/m/Y" }} à {{ appointment.time|time:"H:i" }}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-gray-500">Aucun rendez-vous enregistré.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'instructor_dashboard' %}" class="inline-block mt-6 text-indigo-500 hover:underline">
+        ⬅ Retour au dashboard
+    </a>
+
+</div>
+{% endblock %}

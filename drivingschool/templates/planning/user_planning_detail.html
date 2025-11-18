@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Planning de {{ target_user.get_full_name|default:target_user.username }}{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-50">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+            📅 Planning de {{ target_user.get_full_name|default:target_user.username }}
+        </h2>
+
+        {% if target_user.role == 'STUDENT' and remaining_hours is not None %}
+            <p class="text-center text-lg mb-4">
+                ⏳ <strong>Heures restantes :</strong> {{ remaining_hours }}h
+            </p>
+        {% endif %}
+
+        <ul class="space-y-4">
+            {% for appointment in appointments %}
+                <li class="bg-gray-100 p-4 rounded-md shadow-sm">
+                    <p>
+                        📅 {{ appointment.date|date:"d/m/Y" }} à {{ appointment.time|time:"H:i" }}
+                    </p>
+                    <p class="text-sm text-gray-700 mt-2">
+                        {% if target_user.role == 'STUDENT' %}
+                            Avec <strong>{{ appointment.instructor.get_full_name|default:appointment.instructor.username }}</strong>
+                        {% else %}
+                            Avec <strong>{{ appointment.student.get_full_name|default:appointment.student.username }}</strong>
+                        {% endif %}
+                    </p>
+                </li>
+            {% empty %}
+                <li class="text-center text-gray-500">Aucun rendez-vous prévu.</li>
+            {% endfor %}
+        </ul>
+
+        <div class="text-center mt-8">
+            <a href="{% url 'planning_list' %}" class="text-indigo-500 hover:underline">
+                ⬅ Retour au planning général
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

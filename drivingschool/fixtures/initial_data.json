@@ -1,0 +1,233 @@
+[
+  {
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$w64YenwkZmaaJyUllSTupL$WKiPsOhENXkOengcdq13Mltjo8wABrGeA/L3aoYjtfo=",
+      "last_login": "2025-04-12T11:58:34.676Z",
+      "is_superuser": true,
+      "username": "yousra",
+      "first_name": "Yousra",
+      "last_name": "Belbaz",
+      "email": "yousra.belbaz@epitech.eu",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2025-04-11T18:03:48.198Z",
+      "role": "STUDENT",
+      "remaining_hours": 20,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$Xjmo5gCF3XShHVXnk8i1Jw$40ckmPmSsgg3/p75zcMm2TeCum6yKXhCg23hLDK1LcE=",
+      "last_login": "2025-04-12T13:06:30.697Z",
+      "is_superuser": false,
+      "username": "Rania",
+      "first_name": "Rania",
+      "last_name": "Belbaz",
+      "email": "rania@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-04-12T12:38:53.884Z",
+      "role": "STUDENT",
+      "remaining_hours": 40,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$SWf7o85lItIe46d8SVRI0S$q9V/Ie6MWM/VyqLMzwcYMyHZyu2c2rCrssWEA2UtM1Y=",
+      "last_login": "2025-04-12T19:02:02.488Z",
+      "is_superuser": false,
+      "username": "Laura",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-04-12T12:39:08.995Z",
+      "role": "SECRETARY",
+      "remaining_hours": 0,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$evCLa0YXqNfBt3LkjjYHoN$wz7xPOIDplarQvzCIQt0J82WdROMkQjN9rMuIqldlO8=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Jean",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-04-12T12:39:24.391Z",
+      "role": "INSTRUCTOR",
+      "remaining_hours": 0,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$M48IAWq0h1sRiVmDLyAU7G$5M/JnmWjsJtdi36hecwGpGEO9a5L6OSFN9zVtTOPPOs=",
+      "last_login": "2025-04-12T13:32:12.265Z",
+      "is_superuser": false,
+      "username": "YousraB",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-04-12T12:39:58.990Z",
+      "role": "ADMIN",
+      "remaining_hours": 0,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$Ezw6ItHLI55gEaddkcXjnW$gc9pXYd9NjtcZOLVbILQdIr2ZFqguthQeiWr334G2vs=",
+      "last_login": "2025-04-12T16:02:37.887Z",
+      "is_superuser": true,
+      "username": "YousraAdmin",
+      "first_name": "Yousra",
+      "last_name": "Admin",
+      "email": "YousraAdmin@gmail.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2025-04-12T13:58:56.797Z",
+      "role": "STUDENT",
+      "remaining_hours": 0,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$Zhpb4e3zF511v0zENVtzeH$ZDG4mgXAmri2sBKYBX5siaMJF7Y4wWl4XUxAt6bl7Ss=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Romain",
+      "first_name": "Romain",
+      "last_name": "Robert",
+      "email": "romain@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-04-12T15:26:24.569Z",
+      "role": "INSTRUCTOR",
+      "remaining_hours": 0,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$720000$jUhwzGwaAZYqChsObWa0B5$+JePombiraw/CxQwlomAOmgjU6yW9FKg1WnJ2J3pHuE=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "Ludo",
+      "first_name": "Ludo",
+      "last_name": "Carper",
+      "email": "ludo@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-04-12T19:12:07.955Z",
+      "role": "STUDENT",
+      "remaining_hours": 0,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "planning.lessonpackage",
+    "pk": 2,
+    "fields": {
+      "student": 1,
+      "total_hours": 31,
+      "used_hours": 4
+    }
+  },
+  {
+    "model": "planning.lessonpackage",
+    "pk": 3,
+    "fields": {
+      "student": 2,
+      "total_hours": 67,
+      "used_hours": 2
+    }
+  },
+  {
+    "model": "planning.lessonpackage",
+    "pk": 4,
+    "fields": {
+      "student": 9,
+      "total_hours": 12,
+      "used_hours": 1
+    }
+  },
+  {
+    "model": "planning.appointment",
+    "pk": 4,
+    "fields": {
+      "student": 2,
+      "instructor": 4,
+      "date": "2025-04-12",
+      "time": "18:39:00",
+      "location": "Corbeil"
+    }
+  },
+  {
+    "model": "planning.appointment",
+    "pk": 5,
+    "fields": {
+      "student": 1,
+      "instructor": 4,
+      "date": "2025-04-21",
+      "time": "08:00:00",
+      "location": "Lieusaint"
+    }
+  },
+  {
+    "model": "planning.appointment",
+    "pk": 6,
+    "fields": {
+      "student": 2,
+      "instructor": 8,
+      "date": "2025-04-18",
+      "time": "09:30:00",
+      "location": "Corbeil"
+    }
+  },
+  {
+    "model": "planning.appointment",
+    "pk": 7,
+    "fields": {
+      "student": 9,
+      "instructor": 8,
+      "date": "2025-05-03",
+      "time": "11:00:00",
+      "location": "Lieusaint"
+    }
+  }
+]

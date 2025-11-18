@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard Instructeur{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-8">
+
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">🧑‍🏫 Dashboard Instructeur</h2>
+
+    <p class="text-lg text-gray-600 mb-8">
+        Bienvenue, <strong>{{ request.user.get_full_name|default:request.user.username }}</strong> !
+    </p>
+
+    <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+        <ul class="space-y-4">
+            <li>
+                <a href="{% url 'user_planning' %}" 
+                   class="flex items-center bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded transition">
+                   📅 Voir mes rendez-vous
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <h3 class="text-2xl font-semibold text-gray-800 mb-4">👥 Mes élèves</h3>
+
+    <div class="bg-white shadow-lg rounded-lg p-6">
+        {% if students %}
+            <ul class="space-y-4">
+                {% for student in students %}
+                <li class="flex flex-col md:flex-row md:items-center md:justify-between bg-gray-50 p-4 rounded hover:bg-gray-100 transition">
+                    <div>
+                        <span class="font-semibold">{{ student.first_name }} {{ student.last_name }}</span> 
+                        (<span class="text-gray-600">{{ student.username }}</span>)
+                        {% if student.lessonpackage %}
+                            - ⏳ {{ student.lessonpackage.remaining_hours }}h restantes
+                        {% endif %}
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <a href="{% url 'student_detail' student_id=student.id %}"  class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                            📄 Voir fiche
+                        </a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-gray-500">Aucun élève assigné pour l’instant.</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

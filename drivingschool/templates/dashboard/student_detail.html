@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">👩‍🎓 Fiche de {{ student.first_name }} {{ student.last_name }}</h2>
+
+    <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+        <p><strong class="text-gray-700">Nom d'utilisateur :</strong> {{ student.username }}</p>
+        <p><strong class="text-gray-700">Email :</strong> {{ student.email }}</p>
+
+        {% if package %}
+        <div class="mt-4">
+            <p><strong class="text-gray-700">Forfait total :</strong> {{ package.total_hours }}h</p>
+            <p><strong class="text-gray-700">Heures utilisées :</strong> {{ package.used_hours }}h</p>
+            <p><strong class="text-gray-700">Heures restantes :</strong> {{ remaining_hours }}h</p>
+        </div>
+        {% else %}
+        <p class="mt-4 text-red-500"><strong>Forfait :</strong> Aucun forfait</p>
+        {% endif %}
+    </div>
+
+    <h3 class="text-2xl font-semibold text-gray-800 mb-4">📅 Rendez-vous</h3>
+    <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+        {% if appointments %}
+            <ul class="space-y-2">
+                {% for appointment in appointments %}
+                <li class="text-gray-600">
+                    📅 {{ appointment.date|date:"d/m/Y" }} à {{ appointment.time|time:"H:i" }}  
+                    avec <strong>{{ appointment.instructor.get_full_name|default:appointment.instructor.username }}</strong>
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-gray-500">Aucun rendez-vous</p>
+        {% endif %}
+    </div>
+
+    <h3 class="text-2xl font-semibold text-gray-800 mb-4">🧑‍🏫 Instructeur assigné</h3>
+    <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
+        {% if student.instructor %}
+            <p class="text-gray-700 font-semibold">{{ student.instructor.get_full_name|default:student.instructor.username }}</p>
+        {% else %}
+            <p class="text-gray-500 italic">Aucun instructeur assigné</p>
+        {% endif %}
+    </div>
+
+    <h4 class="text-xl font-semibold text-gray-700 mb-4">✏️ Modifier l'instructeur</h4>
+    <form method="post" class="bg-white shadow-lg rounded-lg p-6 mb-8">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded">
+            Enregistrer
+        </button>
+    </form>
+
+    <a href="{% url 'student_list' %}" class="inline-block mt-4 text-indigo-500 hover:underline">⬅ Retour à la liste</a>
+</div>
+{% endblock %}

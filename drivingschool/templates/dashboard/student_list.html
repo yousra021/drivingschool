@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+Liste des élèves
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-8">
+
+    <h2 class="text-3xl font-bold text-gray-800 mb-8">📋 Liste des étudiants</h2>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white rounded-lg shadow-lg overflow-hidden">
+            <thead class="bg-indigo-600 text-white">
+                <tr>
+                    <th class="py-3 px-6 text-left text-sm font-semibold">Nom</th>
+                    <th class="py-3 px-6 text-left text-sm font-semibold">Email</th>
+                    <th class="py-3 px-6 text-center text-sm font-semibold">Heures restantes</th>
+                    <th class="py-3 px-6 text-center text-sm font-semibold">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700">
+                {% for student in students %}
+                <tr class="border-b hover:bg-gray-100 transition">
+                    <td class="py-4 px-6">{{ student.student.username }}</td>
+                    <td class="py-4 px-6">{{ student.student.email }}</td>
+                    <td class="py-4 px-6 text-center">
+                        {% if student.package %}
+                            {{ student.package.remaining_hours }} h
+                        {% else %}
+                            <span class="text-red-500">Aucun forfait</span>
+                        {% endif %}
+                    </td>
+                    <td class="py-4 px-6 text-center space-y-2 text-sm">
+                        <div class="flex justify-center gap-2">
+                            <a href="{% url 'add_hours_to_student' student_id=student.student.id %}" class="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1 rounded">➕ Heures</a>
+                            <a href="{% url 'student_detail' student_id=student.student.id %}" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded">Fiche</a>
+                            <a href="{% url 'user_planning_detail' user_id=student.student.id %}" class="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded">📅 Planning</a>
+                            <a href="{% url 'edit_user' pk=student.student.id %}" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">✏️ Modifier</a>
+                            <a href="{% url 'delete_user' pk=student.student.id %}" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded">❌ Supprimer</a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center py-8 text-gray-500">
+                        Aucun étudiant enregistré pour le moment.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

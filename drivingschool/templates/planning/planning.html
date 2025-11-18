@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Planning{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">📅 Mon planning</h2>
+
+    {% if user.role == "STUDENT" and remaining_hours is not None %}
+        <h3 class="text-2xl font-semibold text-gray-800 mt-8">🛡️ Mon Forfait</h3>
+        <p class="text-lg text-gray-700"><strong>Heures achetées :</strong> {{ total_hours }}h</p>
+        <p class="text-lg text-gray-700"><strong>Heures utilisées :</strong> {{ used_hours }}h</p>
+        <p class="text-lg text-gray-700"><strong>Heures restantes :</strong> {{ remaining_hours }}h</p>
+    {% endif %}
+
+    {% if user.role == "INSTRUCTOR" or user.role == "SECRETARY" %}
+    <div class="text-center mt-6">
+        <a href="{% url 'appointment_create' %}" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 rounded-md transition">
+            ➕ Créer un rendez-vous
+        </a>
+    </div>
+    {% endif %}
+
+    <ul class="space-y-4 mt-6">
+        {% for appointment in appointments %}
+            <li class="bg-gray-100 p-4 rounded-md shadow-sm">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-lg font-semibold text-gray-800">
+                            📅 {{ appointment.date|date:"d/m/Y" }} à {{ appointment.time|time:"H:i" }}
+                        </p>
+                        <p class="text-gray-700">
+                            {% if user.role == "STUDENT" %}
+                                Avec <strong>{{ appointment.instructor.get_full_name|default:appointment.instructor.username }}</strong>
+                            {% else %}
+                                Avec <strong>{{ appointment.student.get_full_name|default:appointment.student.username }}</strong>
+                            {% endif %}
+                        </p>
+                        <p class="text-gray-600">📍 Lieu : {{ appointment.location }}</p>
+                    </div>
+
+                    {% if user.role == "INSTRUCTOR" or user.role == "SECRETARY" %}
+                    <div class="flex space-x-2">
+                        <a href="{% url 'appointment_update' pk=appointment.pk %}" class="text-indigo-600 hover:text-indigo-800">✏️ Modifier</a>
+                        <a href="{% url 'appointment_delete' pk=appointment.pk %}" class="text-red-600 hover:text-red-800">❌ Supprimer</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </li>
+        {% empty %}
+            <li class="text-center text-gray-500">Aucun rendez-vous prévu.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

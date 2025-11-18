@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard Admin{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-8">
+
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">🛠️ Dashboard Administrateur</h2>
+
+    <p class="text-lg text-gray-600 mb-4">
+        Bienvenue, <strong>{{ request.user.get_full_name|default:request.user.username }}</strong> !
+    </p>
+
+    <p class="text-gray-500 mb-8">
+        Tu peux accéder à toutes les fonctionnalités depuis l'interface Django Admin.
+    </p>
+
+    <a href="/admin/" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded transition">      
+        🔧 Aller vers l'administration
+    </a>
+
+</div>
+{% endblock %}

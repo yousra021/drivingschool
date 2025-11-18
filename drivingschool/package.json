@@ -1,0 +1,25 @@
+{
+  "name": "w-web-350-par-4-1-drivingschool-ilyana.soued",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EpitechWebAcademiePromo2025/W-WEB-350-PAR-4-1-drivingschool-ilyana.soued.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EpitechWebAcademiePromo2025/W-WEB-350-PAR-4-1-drivingschool-ilyana.soued/issues"
+  },
+  "homepage": "https://github.com/EpitechWebAcademiePromo2025/W-WEB-350-PAR-4-1-drivingschool-ilyana.soued#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.4"
+  }
+}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Modifier un rendez-vous
+{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-50">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">🗓️ Modifier un rendez-vous</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ field.errors }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            {% if form.non_field_errors %}
+                <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
+                    <strong>Erreur :</strong> {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="flex space-x-4">
+                <button type="submit" class="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 rounded transition">
+                    Enregistrer
+                </button>
+                <a href="{% url 'user_planning' %}" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 rounded text-center transition">
+                    Retour
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('input, select, textarea').forEach(function(el) {
+            el.classList.add(
+                'w-full', 
+                'px-4', 
+                'py-2', 
+                'mt-2', 
+                'border', 
+                'rounded-md', 
+                'focus:outline-none', 
+                'focus:ring-2', 
+                'focus:ring-indigo-400'
+            );
+        });
+    });
+</script>
+
+{% endblock %}

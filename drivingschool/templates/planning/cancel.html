@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2>Paiement annulé ❌</h2>
+
+    <p>Le paiement a été annulé. Vous pouvez réessayer à tout moment.</p>
+
+    <a href="{% url 'purchase_lesson' %}" class="btn btn-warning mt-3">Réessayer</a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Ajouter des heures{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-50">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">🕐 Ajouter des heures de cours</h2>
+
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div>
+                    {{ field.label_tag }}
+                    {% if field.field.widget.input_type == "select" %}
+                        <select 
+                            name="{{ field.name }}"
+                            id="{{ field.id_for_label }}"
+                            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                            {% if field.field.required %}required{% endif %}
+                        >
+                            {% for option in field.field.choices %}
+                                <option value="{{ option.0 }}">{{ option.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    {% else %}
+                        <input 
+                            type="{{ field.field.widget.input_type }}" 
+                            name="{{ field.name }}" 
+                            value="{{ field.value|default_if_none:'' }}"
+                            id="{{ field.id_for_label }}"
+                            class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                            {% if field.field.required %}required{% endif %}
+                        >
+                    {% endif %}
+                    {% if field.errors %}
+                        <p class="text-red-500 text-sm mt-1">{{ field.errors }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 rounded transition">
+                Ajouter
+            </button>
+        </form>
+
+        <div class="text-center mt-6">
+            <a href="{% url 'student_list' %}" class="text-indigo-500 hover:underline">
+                ⬅ Retour à la liste
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
