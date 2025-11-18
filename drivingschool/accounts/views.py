@@ -170,3 +170,9 @@ def logout_view(request):
         logout(request)
         return redirect('login')
     return render(request, 'accounts/logout.html')
+
+def home(request):
+    """Vue d'accueil qui redirige vers login ou dashboard selon l'état de connexion"""
+    if request.user.is_authenticated:
+        return redirect('redirect_by_role')
+    return redirect('login')

@@ -2,9 +2,10 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from .views import redirect_by_role, add_hours_to_student, add_hours, StudentCreateView, UserUpdateView, UserDeleteView, InstructorCreateView, StudentListView, StudentDetailView
 from accounts.views import InstructorCreateView
-from .views import logout_view
+from .views import logout_view, home
 
 urlpatterns = [
+    path("", home, name="home"),
     path("login/", auth_views.LoginView.as_view(template_name="accounts/login.html"), name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
     path("redirect-by-role/", redirect_by_role, name="redirect_by_role"),

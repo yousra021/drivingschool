@@ -21,9 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("accounts.urls")),
     path("dashboard/", include("dashboard.urls")),
-    path("dashboard/", include("dashboard.urls")),
     path("planning/", include("planning.urls")),
-    path('dashboard/', include('dashboard.urls')),
     path("accounts/", include("accounts.urls")),
     path("bonus/", include("bonus.stripe_payment.urls")),
 ]
